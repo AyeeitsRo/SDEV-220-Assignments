@@ -60,7 +60,7 @@ def add_book() -> str:
     db.session.commit()
     return {'id': book.id}
 
-app.route('/books/<id>', methods=['DELETE'])
+@app.route('/books/<id>', methods=['DELETE'])
 def delete_book() -> str:
     book = Books.query.get(id)
     removed = book
@@ -70,7 +70,7 @@ def delete_book() -> str:
     db.session.commit()
     return {"Deleted Book:": removed}
 
-app.route('/books/<id>', methods=['PUT'])
+@app.route('/books/<id>', methods=['PUT'])
 def update_book() -> str:
     book = Books.query.get_or_404(id)
     
