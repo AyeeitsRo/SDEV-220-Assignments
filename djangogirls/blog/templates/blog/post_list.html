@@ -1,29 +1,13 @@
-{% comment %}
-blog/templates/blog
-{% endcomment %}
+{% extends 'blog/base.html' %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Ro's blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Ro's Blog</a></h1>
-        <b><time>initiated: 13.02.2025</time></b>
-        </header>
-
-        <article>
-            <h2><a href="">My first post</a></h2>
-            <p>You know what they say....</p>
-            <b><time>published: 13.02.2025, 12:03</time></b>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </article>
-
-        <article>
-            <h2><a href="">My second post</a></h2>
-            <p>The sky is falling!!! 
-                <br>Chicken Little... the movie?</p>
-            <b><time>published: 13.02.2025, 12:05</time></b>
-        </article>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
